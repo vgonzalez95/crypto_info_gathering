@@ -11,5 +11,7 @@ def get_min_data(crypto_ticker):
     endpoint = f'{config.BASE_URL}/{crypto_ticker}?apikey={config.API_TOKEN}'
     response = requests.get(endpoint)
     payload = response.json()
+    if not payload:
+        print('bad ticker')
     print(payload)
     return jsonify(payload)
