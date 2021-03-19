@@ -1,8 +1,13 @@
 from flask import Flask
-from data_recollector.blueprints.cryptos import cryptos
+from data_recollect.blueprints.cryptos import cryptos
 
-app = Flask(__name__)
-app.register_blueprint(cryptos)
+
+def main():
+    app = Flask(__name__)
+    app.config.from_object('flask_config.Config')
+    app.register_blueprint(cryptos)
+    app.run()
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    main()
